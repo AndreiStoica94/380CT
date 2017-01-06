@@ -1,0 +1,38 @@
+#include<iostream>
+using namespace std;
+int n,t,total = 0,i;
+int x[100],a[100];
+void printx()
+{ int i;
+ for(i = 0;i < n;i++)
+ {  if(x[i])
+  cout << a[i] << " ";
+ }
+ cout << endl;
+}
+int SubsetSum(int sum,int k,int r)
+{ x[k] = 1;
+ if(sum + a[k] == t)
+ {  printx();
+ }
+ else if(sum + a[k] + a[k+1] <= t)
+ SubsetSum(sum + a[k],k+1,r - a[k]);
+ x[k] = 0;
+ if((sum + r - a[k] >= t) && (sum + a[k+1] <=t))
+        SubsetSum(sum,k+1,r-a[k]);
+}
+void sort(int a[],int n)
+{    int i,j,aux;
+    for(i=0;i<n-1;i++)
+        for(j=i+1;j<n;j++)
+    if(a[i]>a[j]){aux=a[i];a[i]=a[j];a[j]=aux;}
+}
+int main()
+{ cin >> n >> t;
+ for(i = 0;i < n;i++)
+ {  cin >> a[i];
+  total += a[i];
+ }
+ sort(a,n);
+ SubsetSum(0,0,total);
+}
