@@ -1,0 +1,19 @@
+#include<iostream>
+using namespace std;
+int arr[200], n, sum;
+int SubsetSum(int arr[], int n, int sum )
+{
+    if(!sum)  return 1;
+    if(sum < 0) return 0;
+    if(n <= 0  && sum > 0)  return 0;
+    return SubsetSum(arr, n-1, sum-arr[n])
+    + SubsetSum(arr, n-1, sum );
+}
+int main()
+{
+  int arr[] = {1,2,5,4,6};
+  int n  = 5;
+  cout<<" Is there subset with given sum " ;
+  SubsetSum(arr, n-1, 10 )? cout<<"Yes" :cout<< "No";
+  return 0;
+}
