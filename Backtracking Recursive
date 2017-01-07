@@ -3,7 +3,7 @@
 using namespace std;
 int x[100],i, t,n,k,nrsol,a[1000];
 void read()
-{n=20,t=1500;
+{n=50,t=1500;
 for(i=1;i<=n;i++)
     a[i]=rand()%1000+1;
 }
