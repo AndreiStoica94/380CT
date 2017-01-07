@@ -1,29 +1,33 @@
 #include<iostream>
+#include<cstdlib>
 using namespace std;
 bool SubsetSum(int arr[], int n, int sum)
-{ 
-  int A[sum+1][n+1];
+{ int A[sum+1][n+1];
   int i,j;
   for (i = 0; i <= n; i++)
     A[0][i] = true;
+
+
   for (i = 1; i <= sum; i++)
     A[i][0] = false;
-  for (i=1; i<=sum; i++)
-  {
-    for (j=1; j<=n; j++)
-    {
+
+  for (i=1; i<=sum; i++){
+    for (j=1; j<=n; j++){
         A[i][j] = A[i][j-1];
         if (i >= arr[j-1])
             A[i][j] = A[i][j] || A[i-arr[j-1]][j-1];
-    }
-  }
+    }}
   return A[sum][n];
 }
 int main()
-{ 
-  int arr[] = {1,2,5,4,6};
-  int n  = 5, A[n][n];
+{
+  int n  = 50, arr[200],i;
+  for(i=1;i<=n;i++)
+    arr[i]=rand()%10000+1;
+    for(i=1;i<=n;i++)
+    cout<<arr[i]<<" ";cout<<endl;
+
   cout<<"Is there a subset with given sum : ";
-  SubsetSum(arr, n, 10) ? cout<<"Yes" : cout<<"No";
+  SubsetSum(arr, n, 1500) ? cout<<"Yes" : cout<<"No";
   return 0;
 }
