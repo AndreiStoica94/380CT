@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 using namespace std;
 void merge(int arr[], int l, int m, int r)
 {
@@ -54,10 +55,11 @@ void mergeSort(int arr[], int l, int r)
  int main()
 {
     int n,a[200],x[200],i,j,s,t;
-    cout<<"n=";cin>>n;
+    n = 50; t = 1500;
     for(i=1;i<=n;i++)
-        cin>>a[i];
-    cout<<"target=";cin>>t;
+        a[i]=rand()%1000+1;
+        for(i=1;i<=n;i++)
+        cout<<a[i]<<" "; cout<<endl;
     mergeSort(a,1,n);
     j=1;
     s=0;
